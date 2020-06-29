@@ -33,18 +33,18 @@ Terraform Enterprise is our self-hosted distribution of Terraform Cloud. It offe
 1. Click on the VM that we just created. e.g. "Ting-TFE-Demo". Then click the "Netwworking" under the "Settings" section. 
 2. Click "Add inbound security rule", change the "Destination port ranges" from '8080' to '8800'; change the "Name" from 'Port_8080' to 'Port_8800'. Then click "Add".
 
-## Step2: Config the VM - Config the DNS name
+## Step3: Config the VM - Config the DNS name
 1. Click on "Properities" under the "Settings" section.
 2. Check the "Public IP address/DNS name label", if the DNS is <none>, click on the link to define a DNS name label. e.g. 'ting-tfe-demo-dns'. Then click "save".
 3. Click "Properties", you will see the DNS Name has been changed. e.g. 'DNS name
 ting-tfe-demo-dns.westus2.cloudapp.azure.com'
 
-## Step3: Connect to the VM
+## Step4: Connect to the VM
 1. Click on the VM that we just created. e.g. "Ting-TFE-Demo". Then click the "Connect" icon.
 2. Choose "SSH". 
 3. Follow the instruction to connect. If you use iTerm, open the Terminal and input the following CLI 'ssh -i <private key path> Ting-TFE-Demo-admin@ting-tfe-demo-dns.westus2.cloudapp.azure.com' the <private key path> is where you save the xxx.pem file. You can read https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal?toc=/azure/virtual-machines/linux/toc.json for more info. 
 
-## Step4: Install TFE (Terraform Enterprise) to the VM
+## Step5: Install TFE (Terraform Enterprise) to the VM
 1. In the terminal which you SSH to the Azure VM, run the following command 
 
 ' curl https://install.terraform.io/ptfe/stable | sudo bash'
