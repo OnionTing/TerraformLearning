@@ -48,7 +48,9 @@ ting-tfe-demo-dns.westus2.cloudapp.azure.com'
 1. In the terminal which you SSH to the Azure VM, run the following command 
 
 ' curl https://install.terraform.io/ptfe/stable | sudo bash'
-2. 
+
+2. Use the default public IP, by entering '0' in the 'Enter desired number (0-1):'
+
 
 
 
