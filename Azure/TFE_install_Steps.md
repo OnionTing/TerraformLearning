@@ -49,7 +49,37 @@ ting-tfe-demo-dns.westus2.cloudapp.azure.com'
 
 ' curl https://install.terraform.io/ptfe/stable | sudo bash'
 
-2. Use the default public IP, by entering '0' in the 'Enter desired number (0-1):'
+2. Use the default public IP, by entering '0' in the 'Enter desired number (0-1):' 
+3. You will get the information below: 
+
+'Operator installation successful
+
+To continue the installation, visit the following URL in your browser:
+
+  http://<the Public IP address>:8800 ' 
+
+## Step6: Continue the TFE installation in browser
+1. Open a browser and go to http://<the Public IP address>:8800
+2. Click 'Continue to Setup' 
+3. If you are running in 'Chrome', follow the instrucion on the previous page to click "Advanced', then click "Proceed" to continue to the Admin Console.
+4. Hostname: copy your VM's DNS name here. e.g. ting-tfe-demo-dns.westus2.cloudapp.azure.com. (you can find the DNS name in "Properties" under the "Settings" section in the Azure portal)
+5. Click "Use Self-Signed Cert". 
+6. Continue click "Advanced", "Proceed to ting-ptfe.westus.cloudapp.azure.com(unsafe).
+7. Upload the .rli file (the TFE license file).
+8. Choose "Online" as installation type, and click "Continue". If you need to adjust the disk size, please check https://docs.microsoft.com/en-us/archive/blogs/linuxonazure/how-to-resize-linux-osdisk-partition-on-azure
+9. Config the Admin Console, create password, and click "Continue". 
+10. You can continue the "Setting" or leave it for later. 
+
+## Create an Admin user (from UI)
+1. In the dashboard 'https://<host name>:8800/dashboard', you can click "open" under the "stop now" button to launch the page or Go to 'https://<host name>:8800/admin/bootstrap'.
+2. In this page, you need to create the first Terraform Enterprise admin user, you could create additional admin once you log in. 
+3. Create the first organization for TFE. 
+4. Set up the VCS connection. Follow the instruction when choosing different provider.
+
+You should be able to setup the first workspace from now on.
+
+## Reference
+1. https://www.terraform.io/docs/enterprise/install/index.html 
 
 
 
