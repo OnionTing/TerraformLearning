@@ -70,7 +70,7 @@ To continue the installation, visit the following URL in your browser:
 9. Config the Admin Console, create password, and click "Continue". 
 10. You can continue the "Setting" or leave it for later. 
 
-## Create an Admin user (from UI)
+## Step7:Create an Admin user (from UI)
 1. In the dashboard 'https://<host name>:8800/dashboard', you can click "open" under the "stop now" button to launch the page or Go to 'https://<host name>:8800/admin/bootstrap'.
 2. In this page, you need to create the first Terraform Enterprise admin user, you could create additional admin once you log in. 
 3. Create the first organization for TFE. 
