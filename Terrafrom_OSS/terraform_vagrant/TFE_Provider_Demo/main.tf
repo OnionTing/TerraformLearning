@@ -11,4 +11,7 @@ resource "tfe_organization" "org"{
 }
 
 # Create a workspace
-resource 
+resource "tfe_workspace" "dev_test" {
+    name = "Dev-test-workspace" 
+    organization = org.name
+}
