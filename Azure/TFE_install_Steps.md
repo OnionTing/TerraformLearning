@@ -23,9 +23,9 @@ Terraform Enterprise is our self-hosted distribution of Terraform Cloud. It offe
 5. Image: choose which image you want to install on your VM. you can just use the default "Ubuntu Server 18.04 LTS". 
 6. size: choose the size of the vm, based on your usage. 
 7. Authentication type: you can choose the "SSH public key" or "Password" to authenticate the admin to login. In this demo, we will use the "SSH public key". 
-8. Username: it is the admin name of the VM. You can use the default name or change it to "Ting-TFE-Demo-admin"
+8. Username: it is the admin name of the VM. You can use the default name or change it to "TingTFEDemoAdmin"
 9. SSH public key source: we choose "SSH public key" in the "Authentication type" section, so you can choose an existing one or create a new key pair. 
-10. Go to "Next:Disks" and click "Create and attach a new disk". In the Source type, choose "None(empty disk)", keep the rest as default.
+10. Go to "Next:Disks" and click "Create and attach a new disk". In the Source type, choose "None(empty disk)", change the size to be at least 64GiB, keep the rest as default.
 11. Go to the "Networking" tab. You can use the existing Virtual Network, or create one. In the "Select inbound ports", add "HTTP(80),HTTP(443),SSH(22)".
 12. Keep the rest as default. Click "Review + create". Save the SSH " xxxx.pem" locally, you will need it to connect to VM.
 
@@ -42,7 +42,11 @@ ting-tfe-demo-dns.westus2.cloudapp.azure.com'
 ## Step4: Connect to the VM
 1. Click on the VM that we just created. e.g. "Ting-TFE-Demo". Then click the "Connect" icon.
 2. Choose "SSH". 
-3. Follow the instruction to connect. If you use iTerm, open the Terminal and input the following CLI 'ssh -i <private key path> Ting-TFE-Demo-admin@ting-tfe-demo-dns.westus2.cloudapp.azure.com' the <private key path> is where you save the xxx.pem file. You can read https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal?toc=/azure/virtual-machines/linux/toc.json for more info. 
+3. Follow the instruction to connect. If you use iTerm, open the Terminal and input the following CLI:
+* 'chomod 400 <private key path>'
+* 'ssh -i <private key path> Ting-TFE-Demo-admin@ting-tfe-demo-dns.westus2.cloudapp.azure.com' 
+
+the <private key path> is where you save the xxx.pem file. You can read https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal?toc=/azure/virtual-machines/linux/toc.json for more info. 
 
 ## Step5: Install TFE (Terraform Enterprise) to the VM
 1. In the terminal which you SSH to the Azure VM, run the following command 
@@ -69,6 +73,14 @@ To continue the installation, visit the following URL in your browser:
 8. Choose "Online" as installation type, and click "Continue". If you need to adjust the disk size, please check https://docs.microsoft.com/en-us/archive/blogs/linuxonazure/how-to-resize-linux-osdisk-partition-on-azure
 9. Config the Admin Console, create password, and click "Continue". 
 10. You can continue the "Setting" or leave it for later. 
+11. If you want to config it in dev/production enviroment, Choose "Production" in the "Installation Type" section. Follow steps here https://www.terraform.io/docs/enterprise/before-installing/reference-architecture/azure.html
+
+## step6.1: PostgreSQL Configuration
+You need to create a PostgreSQL in Azure. 
+1. Search 'PostgreSQL' in the portal searching bar to find the app -- PostgreSQL.
+2. Click 'Create' to create the VM.
+3. Make sure the VM meet the requirment from https://www.terraform.io/docs/enterprise/before-installing/postgres-requirements.html 
+
 
 ## Step7:Create an Admin user (from UI)
 1. In the dashboard 'https://<host name>:8800/dashboard', you can click "open" under the "stop now" button to launch the page or Go to 'https://<host name>:8800/admin/bootstrap'.

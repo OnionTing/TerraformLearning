@@ -1,7 +1,7 @@
 # Config the Terraform Enterprise Provider
 provider "tfe" {
-    hostname="${var.hostname}"
-    version = "~> 0.15.0"
+  hostname = "var.hostname"
+  version  = "~> 0.15.0"
 }
 
 # Create an organization

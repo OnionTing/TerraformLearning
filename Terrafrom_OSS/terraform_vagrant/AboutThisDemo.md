@@ -10,8 +10,9 @@ The Vagrantfile is used to set up the demo enviroment:
 This will demonstrate how to use 'Terraform Enterprise Provider' https://www.terraform.io/docs/providers/tfe/index.html.
 To use the demo, please:
 * Clone this folder to your Terraform enviroment. 
-* Update the 'Your Host Name' in the 'variable.tf' file with your TFE hostname
-* Update the .terraformrc file "Your Team API Token" with your Team API Token.
-* Run 'terraform init'  to download the plugin
+* run the following commend to set the enviroment variables: (here we are using the enviroment variables, you can read https://www.terraform.io/docs/providers/tfe/index.html to choose other authentication method )
+* 'export TFE_HOSTNAME=aaaaa.bbbb.ccccc.com'
+* 'export TFE_TOKEN=aa.bbbc.ddd.e.fff.ggg'
+
 
 
