@@ -80,7 +80,27 @@ You need to create a PostgreSQL in Azure.
 1. Search 'PostgreSQL' in the portal searching bar to find the app -- PostgreSQL.
 2. Click 'Create' to create the VM.
 3. Make sure the VM meet the requirment from https://www.terraform.io/docs/enterprise/before-installing/postgres-requirements.html 
+4. The PostgreSQL VM must be in the same Region as the one that TFE is installed. 
+5. You need to create a DNS name for the VM. (the steps are the same as descripbed in 'step3')
+6. SSH to the PostgreSQL VM, run the following command to install PostgreSQL
+* 'sudo apt-get install postgresql'
+* 'sudo apt-get install postgresql-contrib' 
 
+7. Config PostgreSQL database user: 'sudo -u postgres createuser --superuser <username> -P'
+8. Allow IP addresses to access the PostgreSQL instance via the PostgreSQL configuration file. 
+* 'sudo vi /etc/postgresql/9.3/main/pg_hba.conf'
+* 'sudo vi /etc/postgresql/9.3/main/postgresql.conf' , you can find the Port info. Add the following line into the file to enable remote connection. 
+
+listen_addresses = '*'
+* restart the PostgresSQL server: 'sudo service postgresql restart'
+9. connect to PostgreSQL - 'sudo -u postgres psql -p 5432 -h 127.0.0.1' and create the database - 'postgres-# CREATE DATABASE tingtfedemodb;' 
+
+here is more info about setting up the PostgreSQL for TFE: https://www.postgresql.org/docs/9.4/libpq-connect.html#LIBPQ-PARAMKEYWORDS
+
+## step6.2: Object Storage - Azure
+https://stackoverflow.com/questions/6985921/where-can-i-find-my-azure-account-name-and-account-key to find the storage account name, and key. 
+
+Create a container within the Blob storage.
 
 ## Step7:Create an Admin user (from UI)
 1. In the dashboard 'https://<host name>:8800/dashboard', you can click "open" under the "stop now" button to launch the page or Go to 'https://<host name>:8800/admin/bootstrap'.
